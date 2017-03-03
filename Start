@@ -1,59 +1,132 @@
  # Für ein gutes Handling ein neues Skript öffnen
  # die Fenster des Skriptes und der console nebeneinander anordnen 
  # eine codezeile kann mit Strg+r in der console ausgeführt werden
- # es können auch mehrere Zeilen markiert und ausgeführt werden 
+ # es können auch mehrere Zeilen markiert und ausgeführt werden
+ 
+ ### Systembefehle ###
+ # alle Befehle sind Funktionen der Form:  Funktionsname(Parameter1, Parameter2,...)
+ help(c)                # Öffnet den Standardbrowser und zeigt den Hilfeeintrag zu dem Befehl c ein
+ example(sum)           # Erstellt ein Beispiel der Funktion sum
+ list.files()           # Erstellt einen Vektor mit den Namen der Datein im Arbeitsverzeichnisse
+ source("dateiname.R")  # Führt den Code aus der R-Skriptdatei dateiname.R
  
  
- ### Syntax und einfache Rechenoperationen
+ ### Einfache Rechenoperationen ###
  # die üblichen Operationen funktionieren wie folgt 
- 1 + 1     # Mit enter bestätigen 
- # Ergebnis 2 
+ 1 + 1                     # Mit enter bestätigen 
+   # Ergebnis: [1] 2
  3 - 1 
- # Ergebnis 2 
+   # Ergebnis: [1] 2
  2 * 2 
- # Ergebnis 4 
+   # Ergebnis: [1] 4
  6 / 3 
- # Ergebnis 2
+   # Ergebnis: [1] 2
  
- ### weitere mathematische Operatoren 
- sqrt(9) # Wurzel 
- sin(0) # Sinus
- cos(0) # cosinus 
- tan(0) # Tangens 
  
- ### Variablen
- X <- 5   # der variablen x wird der Wert 5 zugewiesen 
- X <- "Hello World" # der variablen  X wird der string Hello World zugeordnet
+ ### weitere mathematische Operatoren ###
+ sqrt(9)                   # Wurzel von 9
+ sin(0)                    # Sinus von 0
+ cos(0)                    # Cosinus von 0 
+ tan(0)                    # Tangens von 0
+ abs(-10)                  # Der Betrag von -10
+ sum(c(1,2,3))             # Die Summe aus 1+2+3 wird gebildet (die Funktion c wird bei Vektoren erklärt)
  
- ### Vektoren
- Y <- c(1,2,3) # der variablen y wird der Vektor 1 2 3 zugewiesen  ( c wie colume ) 
- X <- c("a","b","c","d") # der variablen X wird der Vektor a b c zugewiesen
- Y + 1 # vektorrechnug mit den Operationen siehe oben wird Skalar ausgeführt
- # Ergebnis 2 3 4
- Z <- c(2,6,12) # der variablen Z wird Vektor 2 4 12 zugeordnet
- Y + Z # die Berechnung erfolgt ebenfalls positionsweise
- # Ergebnis 4 9 16
- sqrt(Y+Z) # ein zusammenhängendes Beispiel
- # Ergebnis 2 3 4
- Y %$% Z # das ist das kreuzprodukt 
- Y[2] # mit den eckigen klammern wird auf Elemente zugegriffen 
+ ### logische Operatoren ###
+ 1 == 2                               # Abfrage ob 1 gleich 2 ist
+   # Ergebnis: [1] FALSE
  
- ### Matrizen 
- Z <- c (X,1:4) # Z wird zur Matrix aus den Spalten a b c d und 1 2 3 4
- # Ergebnis a 1 
- #          b 2 
- #          c 3 
- #          d 4 
+ 
+ ### Variablen ###
+ X <- 5                               # der Variablen X wird der Wert 5 zugewiesen 
+ X <- "Hello World"                   # der Variablen X wird der string Hello World zugeordnet
+ X <- TRUE                            # der Variablen X wird der Logische Wert WAHR zugewiesen // TRUE kann mit T abgekürzt werden
+ 
+ 
+ ### Vektoren ###
+ Y <- c(1,2,3)                                            # der Variablen Y wird der Vektor 1 2 3 zugewiesen  ( c wie colume ) 
+ X <- c("a","b","c","d")                                  # der Variablen X wird der Vektor a b c zugewiesen
+ c(1, TRUE, "Hallo")                                      # Ein Vektor mit unterschidlichen Typen von Variablen soll erzeugt werden
+   # Ergebnis: [1] "1" "TRUE" "Hallo"                     # Ein Vektor kann nur einen Datentyp beinhalten d.h. alle Werte werden in den Datentyp String umgewandelt
+ X <- c(2,100,12)                                         # der Variablen X wird Vektor 2 6 12 zugeordnet
+ X[2]                                                     # mit den eckigen Klammern wird auf Elemente zugegriffen das (im Beispiel das zweite Element vom Vektor Z)
+   # Ergebnis: [1] 100 
+ X[c(1,3)]                                                # es soll das 1. und 3. Element des Vektors X ausgegeben werden
+   # Ergebnis: [1] 2 12
+ X[2] <- 25                                               # dem zweiten Element des Vektors X wird der Wert 6 zugewiesen
+ names(X) <- c("ersterWert","zweiterWert","dritterWert")  # Die Elemente werden benannt
+ X                                                        # Vektor X ausgeben
+   # Ergebnis:  ersterWert zweiterWert dritterWert
+   #                     2          25          12
+ X["dritterWert"]                                         # Das Element im Vektor X mit dem Namen dritterWert wird ausgegeben
+   # Ergebnis: [1] 12                                     
+ X["zweiterWert"] <- 6                                    # Dem Element im Vektor X mit dem Namen zweiterWert wird der Wert 6 zugewiesen
+ 
+ # Umgang mit Elementen ohne Inhalt
+ Z <- c(1,2,NA,4)                           # Der Vektor Z mit 4 Elemente wird erzeugt, NA bedeutet kein Inhalt
+ sum(Z)                                     # Die Summe aus den Elementen des Vektors Z soll gebildet werden           
+   # Ergebnis: [1] NA                       # Die Summe wird als NA (d.h. not available = nicht verfügbar) ausgegeben da eine Element keinen Inhalt hat 
+ sum(Z, na.rm = TRUE)                       # na.rm (not avialable remove) wenn als TRUE aktiviert werden die ELemente mit NA vor dem ausführen der Funktion entfernt
+   # Ergebnis: [1] 7
+   
+ # Rechnen mit Vektoren
+ Y + 1                                      # Vektorrechnug mit den Operationen wird skalar ausgeführt
+   # Ergebnis: [1] 2 3 4
+ Y + X                                      # die Berechnung erfolgt ebenfalls positionsweise
+   # Ergebnis: [1] 4 9 16
+ sum(Y)                                     # die Summe aus den einzelnen Elementes des Vektors Y wird gebildet
+   # Ergebnis: [1] 6
+ sqrt(Y+X)                                  # ein zusammenhängendes Beispiel
+   # Ergebnis: [1] 2 3 4
+ Y %$% X                                    # das ist das kreuzprodukt
+ Y == X                                     # Vergleich der einzelnen Element in den Vektoren Y und Z
+   # Ergebnis: [1] FALSE FALSE FALSE
+ 
+ # Erzeugen von Vektoren Folgen / Wiederholungen
+ 1:5                                        # mit dem Doppelpunkt wird eine Reihe erzeugt 
+   # Ergebnis: [1] 1 2 3 4 5
+ seq(2,5,0.5)                               # die Funktion seq() funktioniert ähnlich Zahlenreihe von 2 bis 5 in 0,5 Schritten
+   # Ergebnis: [1] 2 2.5 3 3.5 4 4.5 5
+ rep("Hallo", times = 3)                    # Erstellt einen Vektor mit 3 mal dem Element Hallo
+   # Ergebnis: [1] "Hallo" "Hallo" "Hallo"
+                                    
+ 
+ 
+ ### Matrizen ###
+ matrix(0,3,4)                          # Eine Matrix aus den 3 Zeilen und 4 Spalten wird erstellt jedem Element wird der Wert 0 zugeordent
+   # Ergebnis:     [,1] [,2] [,3] [,4]
+   #           [1,]  0    0    0    0
+   #           [2,]  0    0    0    0
+   #           [3,]  0    0    0    0
+ Z <- 1:12                              # Der Variablen Z wird ein Vektor mit den Elementen 1 2 3 ... 12 zugeordnet
+ matrix(Z,3,4)                          # Eine Matrix aus den 3 Zeilen und 4 Spalten wird erstellt die Elemente aus dem Vektor Z {1 2 3 ... 12} gefüllt
+   # Ergebnis:     [,1] [,2] [,3] [,4]
+   #           [1,]  1    4    7    10
+   #           [2,]  2    5    8    11
+   #           [3,]  3    6    9    12
+ 
+ A <- 1:8                               # Der Variablen Z wird ein Vektor mit den Elementen 1 2 3 ... 8 zugeordnet
+ dim(A) <- c(2,4)                       # die Funktion dim()legt die Dimensionen einer Matrix fest 
+                                        # Als Zuweisung wird ein Vektor mit 2 Elmenten erwartet 1. Ziffer Anzahl Zeilen und 2. Ziffer Anzahl Spalten
+ A                                      # die Variable A wird ausgegeben
+   # Ergebnis:     [,1] [,2] [,3] [,4]  # der Vektor A wurde mit dim() in eine Matrix überführt
+   #           [1,]  1    3    5    7  
+   #           [2,]  2    4    6    8 
+A[1,3]                                  # das Element aus Matrix A welches in der 1. Zeile und 3. Spalte steht wird ausgegeben
+   # Ergebnis: [1] 5
+A[2,4] <- 0                             # dem Element aus Matrix A welches in der 2. Zeile und 4. Spalte steht wird der Wert 0 zugewiesen
+ ### Daten einlesen ###
+ # die Dateien müssen dafür im Arbeitsverzeichnis (Workdirectory) des R GUI's sein
+ # eine CSV Datei einlesen (Comma Seperated Values)
+ X <- read.csv ("dateiname.csv",dec=",",sep=";")     # die Daten aus der benannten Datei werden eingelesen dec
+                                                     # dec gibt an wie kommazahlen dargestellt werden 
+                                                     # sep gibt an wie die Elemente getrennt werden 
 
- 
- ### Daten einlesen
- # die Dateien müssen dafür im workdirectory des r guis sein
- X <- read.csv ("dateiname.csv",dec=",",sep=";") # die Daten aus der benannten Datei werden eingelesen dec
- # dec gibt an wie kommazahlen dargestellt werden 
- # sep gibt an wie die Elemente getrennt werden 
- # Ergebnis 3
- 1:5 # mit dem Doppelpunkt wird eine Reihe erzeugt 
- # Ergebnis 1 2 3 4 5 
- seq(2,5,0.5) # die Funktion seq() funktioniert ähnlich
- # Ergebnis 2 2.5 3 3.5 4 4.5 5
+
+### Erzeugen von Grafiken ###
+barplot(1:100)          # der Vektor 1 2 ... 100 wird als Balkendiagramm dargestellt
+barplot(X)              # der Vektor X (mit benamten Elementen) wird als Balkendiagramm dargestellt
+plot(X,Y)               # Element 1 aus Vektor X ist der x-Wert und Element 1 ist der y-Wert, diese wird in einem Koordinatensystem dargestellt
+
+
+
  
