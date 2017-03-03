@@ -103,7 +103,6 @@
    #           [1,]  1    4    7    10
    #           [2,]  2    5    8    11
    #           [3,]  3    6    9    12
- 
  A <- 1:8                               # Der Variablen Z wird ein Vektor mit den Elementen 1 2 3 ... 8 zugeordnet
  dim(A) <- c(2,4)                       # die Funktion dim()legt die Dimensionen einer Matrix fest 
                                         # Als Zuweisung wird ein Vektor mit 2 Elmenten erwartet 1. Ziffer Anzahl Zeilen und 2. Ziffer Anzahl Spalten
@@ -114,6 +113,17 @@
 A[1,3]                                  # das Element aus Matrix A welches in der 1. Zeile und 3. Spalte steht wird ausgegeben
    # Ergebnis: [1] 5
 A[2,4] <- 0                             # dem Element aus Matrix A welches in der 2. Zeile und 4. Spalte steht wird der Wert 0 zugewiesen
+A[2,]                                   # Ausgabe der zweiten Zeile der Matrix A
+  # Ergebnis: [1] 2 4 6 8
+A[,4]                                   # Ausgabe der vierten Spalte der Matrix A
+  # Ergebnis: [1] 7 0               
+A[,2:4]                                 # Ausgabe der Spalten 2 bis 4 der Matrix A
+   # Ergebnis:     [,1] [,2] [,3]       
+   #           [1,]  3    5    7      
+   #           [2,]  4    6    0
+B <- Matrix(1,10,10)                    # Der Variablen B wird eine Matrix mit 10 Zeilen und 10 Spalten allen Elementen wird der Wert 1 zugeordnet   
+B[4,6] <- 0                             # Das Element in der 4. Zeile und 6 Spalte wird der Wert 0 zugewiesen
+
  ### Daten einlesen ###
  # die Dateien müssen dafür im Arbeitsverzeichnis (Workdirectory) des R GUI's sein
  # eine CSV Datei einlesen (Comma Seperated Values)
@@ -126,7 +136,23 @@ A[2,4] <- 0                             # dem Element aus Matrix A welches in de
 barplot(1:100)          # der Vektor 1 2 ... 100 wird als Balkendiagramm dargestellt
 barplot(X)              # der Vektor X (mit benamten Elementen) wird als Balkendiagramm dargestellt
 plot(X,Y)               # Element 1 aus Vektor X ist der x-Wert und Element 1 ist der y-Wert, diese wird in einem Koordinatensystem dargestellt
+contour(B)              # Die Matrix B als Konturdiagramm darstellen
+persp(B)                # Die Matrix B als Konturdiagramm perspektivisch darstellen (x- Achse = Zeile, y-Achse = Spalte, z-Achse = Wert des Elements)
+persp(B, expand = 0.2)  # der Parameter expand setzt der Maßstab der z-Achse im Verhältnis zur X und Y -Achse
+image(B)                # Die MAtrix B wird als Wärmebild dargestellt (x- Achse = Zeile, y-Achse = Spalte, Farbe = Wert des Elements)
+
+# Grafiken bearbeiten / ergänzen
+barplot(1:100)
+abline(h = 30)          # eine horizonztale Linie wird bei y = 30 ins Koordinatensystem eingezeichnet
 
 
+### Statistik ###
+X <- c(4,3,4,3,2,4,4,4)
+mean(X)                   # das arithmetische Mittel des Vektors X wird berechnet und ausgegeben
+X[8] <- 14
+mean(X)
+median(X)                 # der Median des Vektors X wird berechnet und ausgegeben
+X <- c(45000,50000,35000,40000,35000,45000,10000,15000)
+sd(X)                     # die Standardabweichung des Vektors X wird berechnet und ausgegeben
 
  
