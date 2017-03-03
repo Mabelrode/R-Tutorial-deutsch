@@ -1,6 +1,12 @@
-### Syntax und einfache Rechenoperationen
+ # Für ein gutes Handling ein neues Skript öffnen
+ # die Fenster des Skriptes und der console nebeneinander anordnen 
+ # eine codezeile kann mit Strg+r in der console ausgeführt werden
+ # es können auch mehrere Zeilen markiert und ausgeführt werden 
+ 
+ 
+ ### Syntax und einfache Rechenoperationen
  # die üblichen Operationen funktionieren wie folgt 
- 1 + 1     # Mit entern bestätigen 
+ 1 + 1     # Mit enter bestätigen 
  # Ergebnis 2 
  3 - 1 
  # Ergebnis 2 
@@ -9,16 +15,19 @@
  6 / 3 
  # Ergebnis 2
  
- # weitere mathematische Operatoren 
+ ### weitere mathematische Operatoren 
  sqrt(9) # Wurzel 
  sin(0) # Sinus
  cos(0) # cosinus 
  tan(0) # Tangens 
  
- # variablen, vektoren, Matrizen 
+ ### Variablen
  X <- 5   # der variablen x wird der Wert 5 zugewiesen 
  X <- "Hello World" # der variablen  X wird der string Hello World zugeordnet
+ 
+ ### Vektoren
  Y <- c(1,2,3) # der variablen y wird der Vektor 1 2 3 zugewiesen  ( c wie colume ) 
+ X <- c("a","b","c","d") # der variablen X wird der Vektor a b c zugewiesen
  Y + 1 # vektorrechnug mit den Operationen siehe oben wird Skalar ausgeführt
  # Ergebnis 2 3 4
  Z <- c(2,6,12) # der variablen Z wird Vektor 2 4 12 zugeordnet
@@ -28,6 +37,20 @@
  # Ergebnis 2 3 4
  Y %$% Z # das ist das kreuzprodukt 
  Y[2] # mit den eckigen klammern wird auf Elemente zugegriffen 
+ 
+ ### Matrizen 
+ Z <- c (X,1:4) # Z wird zur Matrix aus den Spalten a b c d und 1 2 3 4
+ # Ergebnis a 1 
+ #          b 2 
+ #          c 3 
+ #          d 4 
+
+ 
+ ### Daten einlesen
+ # die Dateien müssen dafür im workdirectory des r guis sein
+ X <- read.csv ("dateiname.csv",dec=",",sep=";") # die Daten aus der benannten Datei werden eingelesen dec
+ # dec gibt an wie kommazahlen dargestellt werden 
+ # sep gibt an wie die Elemente getrennt werden 
  # Ergebnis 3
  1:5 # mit dem Doppelpunkt wird eine Reihe erzeugt 
  # Ergebnis 1 2 3 4 5 
