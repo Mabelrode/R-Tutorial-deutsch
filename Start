@@ -1,20 +1,36 @@
 ### Syntax und einfache Rechenoperationen
-# die üblichen Operationen funktionieren wie folgt 
-1 + 1     # Mit entern bestätigen 
-2 
-3 - 1 
-2 
-2 * 2 
-4 
-6 / 3 
-2 
-
-# variablen, vektoren, Matrizen 
-X <- 5   # der variablen x wird der Wert 5 zugewiesen 
-Y <- c (1,2,3) # der variablen y wird der Vektor 1 2 3 zugewiesen  ( c wie colume ) 
-Y + 1 # vektorrechnug mit den Operationen siehe oben wird Skalar ausgeführt
-2 3 4
-Z <- c (2,3,4) 
-Y + Z # die Berechnung erfolgt ebenfalls positionsweise
-3 5 7 
-Y %$% Z # das ist das kreuzprodukt 
+ # die üblichen Operationen funktionieren wie folgt 
+ 1 + 1     # Mit entern bestätigen 
+ # Ergebnis 2 
+ 3 - 1 
+ # Ergebnis 2 
+ 2 * 2 
+ # Ergebnis 4 
+ 6 / 3 
+ # Ergebnis 2
+ 
+ # weitere mathematische Operatoren 
+ sqrt(9) # Wurzel 
+ sin(0) # Sinus
+ cos(0) # cosinus 
+ tan(0) # Tangens 
+ 
+ # variablen, vektoren, Matrizen 
+ X <- 5   # der variablen x wird der Wert 5 zugewiesen 
+ X <- "Hello World" # der variablen  X wird der string Hello World zugeordnet
+ Y <- c(1,2,3) # der variablen y wird der Vektor 1 2 3 zugewiesen  ( c wie colume ) 
+ Y + 1 # vektorrechnug mit den Operationen siehe oben wird Skalar ausgeführt
+ # Ergebnis 2 3 4
+ Z <- c(2,6,12) # der variablen Z wird Vektor 2 4 12 zugeordnet
+ Y + Z # die Berechnung erfolgt ebenfalls positionsweise
+ # Ergebnis 4 9 16
+ sqrt(Y+Z) # ein zusammenhängendes Beispiel
+ # Ergebnis 2 3 4
+ Y %$% Z # das ist das kreuzprodukt 
+ Y[2] # mit den eckigen klammern wird auf Elemente zugegriffen 
+ # Ergebnis 3
+ 1:5 # mit dem Doppelpunkt wird eine Reihe erzeugt 
+ # Ergebnis 1 2 3 4 5 
+ seq(2,5,0.5) # die Funktion seq() funktioniert ähnlich
+ # Ergebnis 2 2.5 3 3.5 4 4.5 5
+ 
